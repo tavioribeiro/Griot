@@ -1,11 +1,11 @@
-package org.tavioribeiro.griot.core.domain.repository
+package org.tavioribeiro.griot.core.domain.annotation.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.tavioribeiro.griot.core.domain.annotation.model.Annotation
+import org.tavioribeiro.griot.core.domain.annotation.model.AnnotationId
+import org.tavioribeiro.griot.core.domain.book.model.BookId
 import org.tavioribeiro.griot.core.domain.error.AnnotationError
 import org.tavioribeiro.griot.core.domain.error.DomainResult
-import org.tavioribeiro.griot.core.domain.model.Annotation
-import org.tavioribeiro.griot.core.domain.model.AnnotationId
-import org.tavioribeiro.griot.core.domain.model.BookId
 
 
 interface AnnotationRepository {

@@ -1,7 +1,13 @@
-package org.tavioribeiro.griot.core.domain.model
+package org.tavioribeiro.griot.core.domain.annotation.model
 
+
+import org.tavioribeiro.griot.core.domain.book.model.BookId
+import org.tavioribeiro.griot.core.domain.book.model.TrackId
 import kotlin.math.max
 import kotlin.math.min
+
+@JvmInline
+value class AnnotationId(val value: String)
 
 data class Annotation(
     val id: AnnotationId,

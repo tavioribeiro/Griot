@@ -1,11 +1,13 @@
-package org.tavioribeiro.griot.core.domain.repository
+package org.tavioribeiro.griot.core.domain.book.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.tavioribeiro.griot.core.domain.book.model.Book
+import org.tavioribeiro.griot.core.domain.book.model.BookId
+import org.tavioribeiro.griot.core.domain.book.model.BookStatus
 import org.tavioribeiro.griot.core.domain.error.BookError
 import org.tavioribeiro.griot.core.domain.error.DomainResult
-import org.tavioribeiro.griot.core.domain.model.Book
-import org.tavioribeiro.griot.core.domain.model.BookId
-import org.tavioribeiro.griot.core.domain.model.BookStatus
+
+
 
 interface BookRepository {
     fun observeAllBooks(): Flow<List<Book>>

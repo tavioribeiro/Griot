@@ -1,4 +1,8 @@
-package org.tavioribeiro.griot.core.domain.model
+package org.tavioribeiro.griot.core.domain.progress.model
+
+import org.tavioribeiro.griot.core.domain.book.model.BookId
+import org.tavioribeiro.griot.core.domain.book.model.TrackId
+
 
 data class PlaybackProgress(
     val bookId: BookId,

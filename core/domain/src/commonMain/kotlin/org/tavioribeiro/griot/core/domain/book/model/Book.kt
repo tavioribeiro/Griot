@@ -1,5 +1,8 @@
-package org.tavioribeiro.griot.core.domain.model
+package org.tavioribeiro.griot.core.domain.book.model
 
+
+@JvmInline
+value class BookId(val value: String)
 
 enum class BookStatus{
     AVAILABLE,

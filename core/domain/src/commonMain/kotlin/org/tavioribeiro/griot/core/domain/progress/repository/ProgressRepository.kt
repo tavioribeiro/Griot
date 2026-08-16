@@ -1,10 +1,10 @@
-package org.tavioribeiro.griot.core.domain.repository
+package org.tavioribeiro.griot.core.domain.progress.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.tavioribeiro.griot.core.domain.book.model.BookId
 import org.tavioribeiro.griot.core.domain.error.DomainResult
 import org.tavioribeiro.griot.core.domain.error.ProgressError
-import org.tavioribeiro.griot.core.domain.model.BookId
-import org.tavioribeiro.griot.core.domain.model.PlaybackProgress
+import org.tavioribeiro.griot.core.domain.progress.model.PlaybackProgress
 
 
 interface ProgressRepository {

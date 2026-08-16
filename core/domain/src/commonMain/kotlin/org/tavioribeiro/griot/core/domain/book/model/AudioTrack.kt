@@ -1,4 +1,8 @@
-package org.tavioribeiro.griot.core.domain.model
+package org.tavioribeiro.griot.core.domain.book.model
+
+
+@JvmInline
+value class TrackId(val value: String)
 
 data class AudioTrack (
     val id: TrackId,

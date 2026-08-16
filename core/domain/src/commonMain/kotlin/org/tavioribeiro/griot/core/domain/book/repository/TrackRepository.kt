@@ -1,11 +1,12 @@
-package org.tavioribeiro.griot.core.domain.repository
+package org.tavioribeiro.griot.core.domain.book.repository
 
 import kotlinx.coroutines.flow.Flow
+import org.tavioribeiro.griot.core.domain.book.model.AudioTrack
+import org.tavioribeiro.griot.core.domain.book.model.BookId
+import org.tavioribeiro.griot.core.domain.book.model.TrackId
 import org.tavioribeiro.griot.core.domain.error.DomainResult
 import org.tavioribeiro.griot.core.domain.error.TrackError
-import org.tavioribeiro.griot.core.domain.model.AudioTrack
-import org.tavioribeiro.griot.core.domain.model.BookId
-import org.tavioribeiro.griot.core.domain.model.TrackId
+
 
 
 interface TrackRepository {
