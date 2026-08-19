@@ -11,6 +11,7 @@ sealed interface RootError
 
 
 sealed interface BookError : RootError {
+    data object EmptyText : BookError
     data object FolderNotFound : BookError
     data object NoAudioFilesFound : BookError
     data object DuplicateSourcePath : BookError // RN-LIV-005: Pasta já em uso
