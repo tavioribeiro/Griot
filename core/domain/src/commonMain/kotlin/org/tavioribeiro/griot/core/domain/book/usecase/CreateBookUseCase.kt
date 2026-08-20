@@ -12,23 +12,23 @@ class CreateBookUseCase(
         book: Book,
     ): DomainResult<Unit, BookError> {
         return try {
-            //-------- RN-LIV-001
-            if (book.title.isEmpty()) {
+            //-------- RN-LIV-002: título obrigatório (não pode ser só espaços)
+            if (book.title.isBlank()) {
                 return DomainResult.Error(BookError.EmptyText)
             }
 
-            //-------- RN-LIV-005
-            val isSourcePathInUse =  bookRepository.isSourcePathInUse("")
-            when(isSourcePathInUse){
+            //-------- RN-LIV-005: uma pasta física só pode estar vinculada a um único livro
+            when (val inUse = bookRepository.isSourcePathInUse(book.sourceFolderPath)) {
+                is DomainResult.Error -> inUse
                 is DomainResult.Success -> {
-                    bookRepository.insertBook(book)
-                    DomainResult.Success(Unit)
-                }
-                is DomainResult.Error -> {
-                    DomainResult.Success(Unit)
+                    if (inUse.data) {
+                        DomainResult.Error(BookError.DuplicateSourcePath)
+                    } else {
+                        bookRepository.insertBook(book)
+                    }
                 }
             }
-        } catch (e: Exception){
+        } catch (e: Exception) {
             DomainResult.Error(BookError.Unknown(e))
         }
     }

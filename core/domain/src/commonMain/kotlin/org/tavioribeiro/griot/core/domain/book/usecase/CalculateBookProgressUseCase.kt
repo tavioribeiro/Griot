@@ -3,6 +3,7 @@ package org.tavioribeiro.griot.core.domain.book.usecase
 import org.tavioribeiro.griot.core.domain.book.model.AudioTrack
 import org.tavioribeiro.griot.core.domain.book.model.TrackId
 import org.tavioribeiro.griot.core.domain.progress.model.BookProgressCalculation
+import org.tavioribeiro.griot.core.domain.progress.model.PlaybackConstants
 
 class CalculateBookProgressUseCase {
 
@@ -56,7 +57,7 @@ class CalculateBookProgressUseCase {
             percentage = percentage,
             totalBookDurationMs = totalDuration,
             totalTimeListenedMs = timeListened,
-            isNearCompletion = percentage >= 97.0f
+            isNearCompletion = percentage >= PlaybackConstants.NEAR_COMPLETION_THRESHOLD
         )
     }
 }

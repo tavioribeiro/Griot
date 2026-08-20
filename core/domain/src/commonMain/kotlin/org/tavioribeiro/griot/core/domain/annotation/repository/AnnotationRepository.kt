@@ -18,5 +18,6 @@ interface AnnotationRepository {
         updatedAtEpochMs: Long
     ): DomainResult<Unit, AnnotationError>
     suspend fun deleteAnnotation(id: AnnotationId): DomainResult<Unit, AnnotationError>
+    suspend fun deleteAnnotationsByBookId(bookId: BookId): DomainResult<Unit, AnnotationError>
     suspend fun searchAnnotations(query: String): DomainResult<List<Annotation>, AnnotationError>
 }

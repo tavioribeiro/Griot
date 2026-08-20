@@ -3,6 +3,7 @@ package org.tavioribeiro.griot.core.domain.annotation.model
 
 import org.tavioribeiro.griot.core.domain.book.model.BookId
 import org.tavioribeiro.griot.core.domain.book.model.TrackId
+import org.tavioribeiro.griot.core.domain.progress.model.PlaybackConstants
 import kotlin.math.max
 import kotlin.math.min
 
@@ -19,7 +20,7 @@ data class Annotation(
     val updatedAtEpochMs: Long = createdAtEpochMs
 ){
     fun calculateSnippetRange(trackDurationMs: Long): SnippetRange {
-        val windowMs = 120_000L // 2 minutos em milissegundos
+        val windowMs = PlaybackConstants.SNIPPET_WINDOW_MS
         val startMs = max(0L, timestampMs - windowMs)
         val endMs = min(trackDurationMs, timestampMs + windowMs)
         return SnippetRange(startMs = startMs, endMs = endMs)

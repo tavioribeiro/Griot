@@ -14,4 +14,5 @@ interface TrackRepository {
     suspend fun getTracksByBookId(bookId: BookId): DomainResult<List<AudioTrack>, TrackError>
     suspend fun getTrackById(trackId: TrackId): DomainResult<AudioTrack, TrackError>
     suspend fun insertTracks(tracks: List<AudioTrack>): DomainResult<Unit, TrackError>
+    suspend fun deleteTracksByBookId(bookId: BookId): DomainResult<Unit, TrackError>
 }

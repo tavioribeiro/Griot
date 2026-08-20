@@ -12,4 +12,5 @@ interface ProgressRepository {
     suspend fun getProgressByBookId(bookId: BookId): DomainResult<PlaybackProgress, ProgressError>
     suspend fun saveProgress(progress: PlaybackProgress): DomainResult<Unit, ProgressError>
     suspend fun updateCompletionStatus(bookId: BookId, isCompleted: Boolean): DomainResult<Unit, ProgressError>
+    suspend fun deleteProgressByBookId(bookId: BookId): DomainResult<Unit, ProgressError>
 }
