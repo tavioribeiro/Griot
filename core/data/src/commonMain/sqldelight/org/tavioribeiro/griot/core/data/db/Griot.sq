@@ -1,0 +1,112 @@
+CREATE TABLE book (
+    id TEXT NOT NULL PRIMARY KEY,
+    title TEXT NOT NULL,
+    author TEXT,
+    coverUri TEXT,
+    sourceFolderPath TEXT NOT NULL,
+    status TEXT NOT NULL,
+    createdAtEpochMs INTEGER NOT NULL
+);
+
+CREATE TABLE track (
+    id TEXT NOT NULL PRIMARY KEY,
+    bookId TEXT NOT NULL,
+    title TEXT NOT NULL,
+    filePath TEXT NOT NULL,
+    orderIndex INTEGER NOT NULL,
+    durationMs INTEGER NOT NULL
+);
+
+CREATE INDEX track_book_index ON track(bookId);
+
+CREATE TABLE annotation (
+    id TEXT NOT NULL PRIMARY KEY,
+    bookId TEXT NOT NULL,
+    trackId TEXT NOT NULL,
+    timestampMs INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    createdAtEpochMs INTEGER NOT NULL,
+    updatedAtEpochMs INTEGER NOT NULL
+);
+
+CREATE INDEX annotation_book_index ON annotation(bookId);
+
+CREATE TABLE progress (
+    bookId TEXT NOT NULL PRIMARY KEY,
+    currentTrackId TEXT NOT NULL,
+    currentPositionMs INTEGER NOT NULL,
+    playbackSpeed REAL NOT NULL,
+    isCompleted INTEGER NOT NULL,
+    lastPlayedAtEpochMs INTEGER NOT NULL
+);
+
+selectAllBooks:
+SELECT * FROM book ORDER BY createdAtEpochMs DESC;
+
+selectBookById:
+SELECT * FROM book WHERE id = ?;
+
+insertBook:
+INSERT INTO book(id, title, author, coverUri, sourceFolderPath, status, createdAtEpochMs)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+updateBook:
+UPDATE book SET title = ?, author = ?, coverUri = ?, sourceFolderPath = ?, status = ?, createdAtEpochMs = ?
+WHERE id = ?;
+
+updateBookStatus:
+UPDATE book SET status = ? WHERE id = ?;
+
+deleteBook:
+DELETE FROM book WHERE id = ?;
+
+sourcePathInUseCount:
+SELECT COUNT(*) FROM book WHERE sourceFolderPath = ?;
+
+selectTracksByBook:
+SELECT * FROM track WHERE bookId = ? ORDER BY orderIndex;
+
+selectTrackById:
+SELECT * FROM track WHERE id = ?;
+
+insertTrack:
+INSERT INTO track(id, bookId, title, filePath, orderIndex, durationMs)
+VALUES (?, ?, ?, ?, ?, ?);
+
+deleteTracksByBook:
+DELETE FROM track WHERE bookId = ?;
+
+selectAnnotationsByBook:
+SELECT * FROM annotation WHERE bookId = ? ORDER BY timestampMs;
+
+selectAllAnnotations:
+SELECT * FROM annotation ORDER BY bookId, timestampMs;
+
+selectAnnotationById:
+SELECT * FROM annotation WHERE id = ?;
+
+insertAnnotation:
+INSERT INTO annotation(id, bookId, trackId, timestampMs, text, createdAtEpochMs, updatedAtEpochMs)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+
+updateAnnotationText:
+UPDATE annotation SET text = ?, updatedAtEpochMs = ? WHERE id = ?;
+
+deleteAnnotation:
+DELETE FROM annotation WHERE id = ?;
+
+deleteAnnotationsByBook:
+DELETE FROM annotation WHERE bookId = ?;
+
+selectProgressByBook:
+SELECT * FROM progress WHERE bookId = ?;
+
+insertOrReplaceProgress:
+INSERT OR REPLACE INTO progress(bookId, currentTrackId, currentPositionMs, playbackSpeed, isCompleted, lastPlayedAtEpochMs)
+VALUES (?, ?, ?, ?, ?, ?);
+
+updateCompletionStatus:
+UPDATE progress SET isCompleted = ? WHERE bookId = ?;
+
+deleteProgressByBook:
+DELETE FROM progress WHERE bookId = ?;
