@@ -1,4 +1,4 @@
-package org.tavioribeiro.griot.core.data.book
+package org.tavioribeiro.griot.core.data.book.repository
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList

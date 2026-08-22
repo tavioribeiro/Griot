@@ -1,4 +1,4 @@
-package org.tavioribeiro.griot.core.data.progress
+package org.tavioribeiro.griot.core.data.progress.repository
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToOneOrNull

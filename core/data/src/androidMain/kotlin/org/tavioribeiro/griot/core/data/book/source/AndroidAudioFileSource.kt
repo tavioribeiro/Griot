@@ -1,4 +1,4 @@
-package org.tavioribeiro.griot.core.data.source
+package org.tavioribeiro.griot.core.data.book.source
 
 import android.content.Context
 import android.media.MediaMetadataRetriever

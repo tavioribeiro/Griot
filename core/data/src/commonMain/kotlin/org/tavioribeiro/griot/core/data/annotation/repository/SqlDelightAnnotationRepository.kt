@@ -1,4 +1,4 @@
-package org.tavioribeiro.griot.core.data.annotation
+package org.tavioribeiro.griot.core.data.annotation.repository
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList

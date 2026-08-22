@@ -1,4 +1,4 @@
-package org.tavioribeiro.griot.core.data.db
+package org.tavioribeiro.griot.core.data.db.driver
 
 import app.cash.sqldelight.db.SqlDriver
 
